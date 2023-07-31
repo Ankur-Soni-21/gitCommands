@@ -1,0 +1,40 @@
+# GITHUB Tutorial
+
+-> git init : initialise the folder as a git repo
+-> git status : check status of untracked/uncommitted files
+-> git add. or git add <FileName> : puts the untracked files on a stage
+-> git commit -m "<message>" : commits the changes made on the stage
+-> git restore --staged <fileName> : unstages the files before committing
+-> git log : log file of all the changes made by everyone
+-> git reset <id> : resets folder to the speccified time/stage
+-> git stash : puts the staged files in a stash and start again 
+	      from the beginning without commiting or deleting 
+-> git stash pop : pops everytinh thats on the backstage.
+-> git stash clear : clears the tuff in stash
+-> git remote add origin <url> : connects us with our repo on github
+				% origin is used for personal repos
+-> git push origin master : pushes to the master branch
+-> git clone <url> : clones your repo after fork
+-> git remote add upstream <url> : add url of the repo u forked
+-> git remote -v : shows all the remote versions of the repo
+
+# BRANCHES : NEVER COMMIT ON MAIN CREATE BRANCHES
+-> git branch <name> : creates a branch
+-> git chcekout <name> : change branch 
+			% make changes then push new branch 
+% for every new feature create a new branch 
+% all the commits are added to the same pull request of the same branch
+% to delete a commit 
+-> git reset <id>
+-> changes are now unstaged
+-> git add .
+-> git stash : stash the staged files/changes
+-> git push origin <branch name> f : forc push becuase we are removing something
+-> merge the pull request if u have the access
+% since your main branch has no commits 
+% but your temporary branch and the upstream/original branch has all the changes
+% we fetch all the changes 
+-> git checkout main
+-> git fetch --all --prune [prune means deleted files as well
+-> git reset --hard upstream/main
+-> git push origin main
