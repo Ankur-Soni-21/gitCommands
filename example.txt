@@ -41,5 +41,10 @@
 -> git commit -m "new commit"
 -> git push origin temp
 
-
+# merging the main and temp branches
+% first update our temp branch with all the changes made to the main branch
+-> git checkout master
+-> git pull origin master : pulling the main branch that has been chnaged by others
+-> git merge temp : merging the temp with new main branch
+-> git push origin master : push the changes
 
