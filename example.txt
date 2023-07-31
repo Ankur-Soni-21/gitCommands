@@ -1,0 +1,45 @@
+# tutorial:
+
+# adding a file our repo
+-> nvim git.txt
+-> git init : initialising the repo on local machine
+-> git add .
+-> git commit -m "message"
+-> git remote add url <ssh url>
+-> git push origin master
+ 
+
+#adding a new file to repo
+ -> nvim new.txt
+ -> git add .
+ -> git commit -m "new changes"
+ -> git push origin master
+
+
+#removing the new from repo
+-> git log
+-> git reset <logid>
+-> git add . : added unstaged file[new.txt]
+-> git stash : stashing the new file
+-> git push origin master -f : pushing to the online repo
+
+
+# creating a new branch
+-> git branch temp
+-> git checkout temp
+
+
+# adding a file to this branch
+-> touch new.txt
+-> git add .
+-> git commit -m "message"
+-> git push origin temp
+
+# commiting another change but same pull request from same branch
+-> touch new2.txt
+-> git add.
+-> git commit -m "new commit"
+-> git push origin temp
+
+
+
