@@ -1,5 +1,6 @@
 # tutorial:
 
+
 # adding a file our repo
 -> nvim git.txt
 -> git init : initialising the repo on local machine
@@ -35,11 +36,13 @@
 -> git commit -m "message"
 -> git push origin temp
 
+
 # commiting another change but same pull request from same branch
 -> touch new2.txt
 -> git add.
 -> git commit -m "new commit"
 -> git push origin temp
+
 
 # merging the main and temp branches
 % first update our temp branch with all the changes made to the main branch
@@ -47,4 +50,93 @@
 -> git pull origin master : pulling the main branch that has been chnaged by others
 -> git merge temp : merging the temp with new main branch
 -> git push origin master : push the changes
+
+
+# Forking and contributing
+-> fork the project from github
+% Similar to cloning but on github
+
+-> git clone <ssh url>
+% clone ur new forked project from your own profile
+% from where u have forked this url is called upstream url by convention
+
+-> git remote add upstream 
+-> git remote -v 
+
+% let's modify something like the readme file
+-> nvim README.md
+-> git status : to check status
+
+% since we don't want changes to the main branch create a new branch
+-> git branch temp
+-> git checkout temp
+-> git add .
+-> git commit -m " ankur added a new message to the readme file from ankur branch"
+
+% if you want to change something in the main branch of the main project
+% what you do is you send a PULL REQUEST mentioning them to MERGE the changes
+-> git push origin temp
+
+% go to github to add a PULL REQUEST for your commit
+% Compare and Create a PULL REQUEST
+
+-> touch newfile.txt
+-> git add.
+-> git commit -m "new change to the temp branch"
+-> git push origin temp
+
+
+% Please create new branches before commiting any new changes
+% Why because if we don't merge then all the commits made on the temp branch will come under the same PULL REQUEST
+% Why we don't make changes on a sigle PULL REQUEST because its hard to manage tall the different chnages on a single REQUEST
+% for very new change make a new PULL REQUEST hence making a new BRANCH
+
+
+% lets assume you want to change back to when u did not commit the newfile and remove it for the current PULL REQUEST
+
+-> git reset <log id>
+-> git add .
+% adding the new file to the stage
+-> git stash
+% stashing it
+-> git push origin temp -f
+% pushing the change to temp by force
+
+% Now click on MERGE to merge the previous changes made to the readme file
+% This will only work if u have the write access
+
+% after u merged the chnages form your temp branch to the original main branch
+% u need to update your own forked[main] branch with all the changes
+
+# keeping in sync with main branch
+-> git fetch --all --prune
+-> git reset --hard upstream/main
+-> git push origin main
+
+# another method
+-> git pull upstream main
+-> git push origin main
+
+# merge conflicts && Sqashing commits
+
+% lets assume you created 4 new files
+-> touch 1
+-> git add .
+-> git commit -m"file 1"
+% four times 
+% merging all the commits
+% copy the log-id merged commit [change in readme commit]
+
+-> git rebase -i 49f66576100aa1e9cfb436548c73adc3609d47b
+% squash all the commits in the previous commit
+% squash 2,3,4 files into commit of file 1 by changing pick to "s"
+% exit the nano mode and leave a message for the commit
+-> git push origin temp2
+
+
+# Merge Conflict
+%  Let's assume someone chnaged line3 of some file of the codebase
+%  which you also committed on
+%  to resolve this u have to do it manually
+%  check the changes and keep the change you want
 
